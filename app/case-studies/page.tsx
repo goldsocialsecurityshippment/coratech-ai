@@ -9,44 +9,38 @@ export const metadata = { title: "Case Studies" };
 export default function CaseStudiesPage() {
   return (
     <>
-      <PageHeader
-        label="Case Studies"
-        title="Real problems. Real results."
-        sub="We let the work speak for itself. Here are some of the problems we have solved and the outcomes we delivered."
-      />
-      <section style={{ padding: "clamp(48px,7vw,80px) 0", background: "#EEF2F7" }}>
-        <div className="wrap" style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
+      <PageHeader label="Case Studies" title="Real problems. Real results." sub="We let the work speak for itself. Here are some of the problems we have solved and the outcomes we delivered." />
+      <section className="py-16 md:py-24 bg-[#EEF2F7]">
+        <div className="wrap flex flex-col gap-5">
           {caseStudies.map(cs => (
-            <Link key={cs.slug} href={`/case-studies/${cs.slug}`} className="card" style={{ display: "block", overflow: "hidden" }}>
-              <div className="case-study-card">
-                {/* Image */}
-                <div style={{ position: "relative" }}>
-                  <Image src={(cs as any).image} alt={cs.title} fill style={{ objectFit: "cover" }} />
-                  <div style={{ position: "absolute", inset: 0, background: "rgba(10,15,30,0.35)" }} />
-                  <div style={{ position: "absolute", bottom: "20px", left: "20px" }}>
-                    <span style={{ padding: "5px 14px", background: "rgba(255,255,255,0.15)", backdropFilter: "blur(4px)", borderRadius: "20px", fontSize: "13px", color: "white" }}>{cs.industry}</span>
+            <Link key={cs.slug} href={`/case-studies/${cs.slug}`} className="card block overflow-hidden">
+              <div className="grid grid-cols-1 md:grid-cols-[300px_1fr] lg:grid-cols-[380px_1fr]">
+                <div className="relative h-52 md:h-auto">
+                  <Image src={(cs as any).image} alt={cs.title} fill className="object-cover" />
+                  <div className="absolute inset-0 bg-[#0A0F1E]/35" />
+                  <div className="absolute bottom-4 left-4">
+                    <span className="px-3 py-1 bg-white/15 backdrop-blur-sm rounded-full text-xs text-white">{cs.industry}</span>
                   </div>
                 </div>
-                {/* Content */}
-                <div style={{ padding: "40px 44px", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+                <div className="p-6 md:p-8 flex flex-col justify-between">
                   <div>
-                    <div style={{ display: "flex", gap: "10px", alignItems: "center", marginBottom: "14px" }}>
-                      <p style={{ fontSize: "13px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: "#4A6FA5" }}>{cs.client}</p>
-                      <span style={{ fontSize: "13px", color: "#718096" }}>{cs.duration}</span>
+                    <div className="flex flex-wrap items-center gap-3 mb-3">
+                      <p className="text-xs font-semibold tracking-widest uppercase text-[#4A6FA5]">{cs.client}</p>
+                      <span className="text-xs text-[#718096]">{cs.duration}</span>
                     </div>
-                    <h2 style={{ fontFamily: "Georgia,serif", fontSize: "22px", color: "#0A0F1E", lineHeight: 1.3, marginBottom: "14px" }}>{cs.title}</h2>
-                    <p style={{ fontSize: "16px", color: "#4A5568", lineHeight: 1.8, marginBottom: "24px" }}>{cs.summary}</p>
-                    <div style={{ display: "flex", flexWrap: "wrap", gap: "8px", marginBottom: "24px" }}>
+                    <h2 className="font-serif text-xl md:text-2xl text-[#0A0F1E] leading-snug mb-3">{cs.title}</h2>
+                    <p className="text-sm md:text-base text-[#4A5568] leading-relaxed mb-5">{cs.summary}</p>
+                    <div className="flex flex-wrap gap-2 mb-5">
                       {cs.technologies.slice(0, 4).map(t => (
-                        <span key={t} style={{ padding: "4px 12px", background: "#EEF2F7", borderRadius: "6px", fontSize: "13px", color: "#4A5568" }}>{t}</span>
+                        <span key={t} className="px-2.5 py-1 bg-[#EEF2F7] rounded text-xs text-[#4A5568]">{t}</span>
                       ))}
                     </div>
                   </div>
-                  <div className="grid-4">
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                     {cs.outcomes.map((o, i) => (
-                      <div key={i} style={{ borderLeft: "2px solid #4A6FA5", paddingLeft: "12px" }}>
-                        <div style={{ fontFamily: "Georgia,serif", fontSize: "1.5rem", color: "#0A0F1E", lineHeight: 1 }}>{o.metric}</div>
-                        <p style={{ fontSize: "12px", color: "#718096", marginTop: "4px", lineHeight: 1.4 }}>{o.label}</p>
+                      <div key={i} className="border-l-2 border-[#4A6FA5] pl-3">
+                        <div className="font-serif text-xl md:text-2xl text-[#0A0F1E] leading-none">{o.metric}</div>
+                        <p className="text-xs text-[#718096] mt-1 leading-snug">{o.label}</p>
                       </div>
                     ))}
                   </div>
@@ -56,7 +50,7 @@ export default function CaseStudiesPage() {
           ))}
         </div>
       </section>
-      <CTA title="Your organisation could be next." sub="Get in touch and tell us what you are trying to solve. We are honest about whether we can help and how." btn="Get in Touch" href="/contact" dark />
+      <CTA title="Your organisation could be next." sub="Get in touch and tell us what you are trying to solve." btn="Get in Touch" href="/contact" dark />
     </>
   );
 }

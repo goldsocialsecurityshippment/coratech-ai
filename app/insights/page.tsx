@@ -10,50 +10,48 @@ export default function InsightsPage() {
   const [first, ...rest] = insights;
   return (
     <>
-      <PageHeader
-        label="Insights"
-        title="What we are thinking about."
-        sub="Practical perspectives on AI, automation and enterprise technology from the Coratech AI team."
-      />
-      <section style={{ padding: "clamp(48px,7vw,80px) 0", background: "#EEF2F7" }}>
+      <PageHeader label="Insights" title="What we are thinking about." sub="Practical perspectives on AI, automation and enterprise technology from the Coratech AI team." />
+      <section className="py-16 md:py-24 bg-[#EEF2F7]">
         <div className="wrap">
-          {/* Featured article */}
-          <Link href={`/insights/${first.slug}`} className="card" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", overflow: "hidden", marginBottom: "24px" }}>
-            <div style={{ position: "relative", minHeight: "320px" }}>
-              <Image src={(first as any).image} alt={first.title} fill style={{ objectFit: "cover" }} />
-              <div style={{ position: "absolute", inset: 0, background: "rgba(10,15,30,0.5)" }} />
-              <div style={{ position: "absolute", bottom: "24px", left: "28px", right: "28px" }}>
-                <span style={{ display: "inline-block", padding: "4px 12px", background: "rgba(255,255,255,0.15)", borderRadius: "20px", fontSize: "12px", color: "white", marginBottom: "12px" }}>{first.category}</span>
-                <h2 style={{ fontFamily: "Georgia,serif", fontSize: "clamp(1.4rem,2.5vw,2rem)", color: "white", lineHeight: 1.3 }}>{first.title}</h2>
+          {/* Featured */}
+          <Link href={`/insights/${first.slug}`} className="card block overflow-hidden mb-5">
+            <div className="grid grid-cols-1 md:grid-cols-2">
+              <div className="relative h-56 md:h-auto min-h-[220px]">
+                <Image src={(first as any).image} alt={first.title} fill className="object-cover" />
+                <div className="absolute inset-0 bg-[#0A0F1E]/50" />
+                <div className="absolute bottom-5 left-5 right-5">
+                  <span className="inline-block px-3 py-1 bg-white/15 rounded-full text-xs text-white mb-3">{first.category}</span>
+                  <h2 className="font-serif text-xl md:text-2xl text-white leading-snug">{first.title}</h2>
+                </div>
               </div>
-            </div>
-            <div style={{ padding: "40px 44px", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
-              <div>
-                <p style={{ fontSize: "15px", color: "#4A6FA5", fontWeight: 500, marginBottom: "16px" }}>{first.subtitle}</p>
-                <p style={{ fontSize: "16px", color: "#4A5568", lineHeight: 1.8, marginBottom: "24px" }}>{first.excerpt}</p>
-              </div>
-              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-                <span style={{ fontSize: "14px", color: "#718096" }}>{first.date} · {first.readTime}</span>
-                <span style={{ display: "flex", alignItems: "center", gap: "6px", fontSize: "14px", fontWeight: 500, color: "#4A6FA5" }}>Read <ArrowRight size={13} /></span>
+              <div className="p-6 md:p-10 flex flex-col justify-between">
+                <div>
+                  <p className="text-sm font-medium text-[#4A6FA5] mb-4">{first.subtitle}</p>
+                  <p className="text-base text-[#4A5568] leading-relaxed mb-6">{first.excerpt}</p>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-sm text-[#718096]">{first.date} · {first.readTime}</span>
+                  <span className="flex items-center gap-2 text-sm font-medium text-[#4A6FA5]">Read <ArrowRight size={13} /></span>
+                </div>
               </div>
             </div>
           </Link>
 
           {/* Grid */}
-          <div className="grid-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {rest.map(a => (
-              <Link key={a.slug} href={`/insights/${a.slug}`} className="card" style={{ display: "block", overflow: "hidden" }}>
-                <div style={{ position: "relative", height: "180px" }}>
-                  <Image src={(a as any).image} alt={a.title} fill style={{ objectFit: "cover" }} />
-                  <div style={{ position: "absolute", inset: 0, background: "rgba(10,15,30,0.35)" }} />
-                  <div style={{ position: "absolute", top: "14px", left: "14px" }}>
-                    <span style={{ padding: "3px 10px", background: "rgba(255,255,255,0.92)", borderRadius: "20px", fontSize: "12px", color: "#4A6FA5", fontWeight: 500 }}>{a.category}</span>
+              <Link key={a.slug} href={`/insights/${a.slug}`} className="card block overflow-hidden">
+                <div className="relative h-44">
+                  <Image src={(a as any).image} alt={a.title} fill className="object-cover" />
+                  <div className="absolute inset-0 bg-[#0A0F1E]/35" />
+                  <div className="absolute top-3 left-3">
+                    <span className="px-2.5 py-1 bg-white/90 rounded-full text-xs text-[#4A6FA5] font-medium">{a.category}</span>
                   </div>
                 </div>
-                <div style={{ padding: "22px 24px" }}>
-                  <p style={{ fontSize: "13px", color: "#718096", marginBottom: "10px" }}>{a.date} · {a.readTime}</p>
-                  <h3 style={{ fontFamily: "Georgia,serif", fontSize: "16px", color: "#0A0F1E", lineHeight: 1.4, marginBottom: "10px" }}>{a.title}</h3>
-                  <p style={{ fontSize: "14px", color: "#4A5568", lineHeight: 1.7, display: "-webkit-box", WebkitLineClamp: 3, WebkitBoxOrient: "vertical", overflow: "hidden" }}>{a.excerpt}</p>
+                <div className="p-5">
+                  <p className="text-xs text-[#718096] mb-2">{a.date} · {a.readTime}</p>
+                  <h3 className="font-serif text-base text-[#0A0F1E] leading-snug mb-3">{a.title}</h3>
+                  <p className="text-sm text-[#4A5568] leading-relaxed line-clamp-3">{a.excerpt}</p>
                 </div>
               </Link>
             ))}

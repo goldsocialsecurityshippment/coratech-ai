@@ -1,4 +1,4 @@
-import { PageHeader, CTA } from "@/components/ui/shared";
+import { PageHeader, CTA, Label } from "@/components/ui/shared";
 
 export const metadata = { title: "Technology" };
 
@@ -16,10 +16,15 @@ export default function TechnologyPage() {
     <>
       <PageHeader label="Technology" title="The tools and capabilities behind what we build." sub="We choose our technologies carefully. Proven tools, strong communities and long-term reliability matter more than novelty." />
 
-      <section style={{ padding: "clamp(48px,7vw,80px) 0", background: "#0A0F1E" }}>
+      {/* AI Capabilities */}
+      <section className="py-16 md:py-24 bg-[#0A0F1E]">
         <div className="wrap">
-          <p style={{ fontSize: "12px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: "#6B8FBF", marginBottom: "32px" }}>AI Capabilities</p>
-          <div className="grid-3">
+          <div className="flex items-center gap-3 mb-5">
+            <div className="w-7 h-px bg-[#6B8FBF]" />
+            <span className="text-xs font-semibold tracking-[0.1em] uppercase text-[#6B8FBF]">AI Capabilities</span>
+          </div>
+          <h2 className="text-2xl md:text-4xl text-white mb-10">Advanced AI, applied to enterprise problems.</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {[
               { title: "Foundation model integration", text: "We work with GPT-4, Claude, Gemini and open-source models. We handle prompt engineering, rate management, cost optimisation and enterprise security." },
               { title: "Custom model development", text: "For use cases where general models fall short, we fine-tune models on your domain data. Legal, medical and financial domains all benefit from this approach." },
@@ -28,25 +33,27 @@ export default function TechnologyPage() {
               { title: "Document intelligence", text: "Reading, understanding and extracting information from complex documents at scale. Works across structured and unstructured formats." },
               { title: "AI observability", text: "Production monitoring, evaluation pipelines and drift detection so your AI systems stay accurate and reliable over time." },
             ].map(cap => (
-              <div key={cap.title} style={{ border: "1px solid rgba(255,255,255,0.1)", borderRadius: "12px", padding: "28px" }}>
-                <h3 style={{ fontFamily: "Georgia,serif", fontSize: "17px", color: "white", marginBottom: "12px" }}>{cap.title}</h3>
-                <p style={{ fontSize: "15px", color: "rgba(255,255,255,0.55)", lineHeight: 1.75 }}>{cap.text}</p>
+              <div key={cap.title} className="border border-white/10 rounded-xl p-6">
+                <h3 className="font-serif text-lg text-white mb-3">{cap.title}</h3>
+                <p className="text-sm text-white/55 leading-relaxed">{cap.text}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section style={{ padding: "clamp(48px,7vw,80px) 0", background: "#EEF2F7" }}>
+      {/* Tech stack */}
+      <section className="py-16 md:py-24 bg-[#EEF2F7]">
         <div className="wrap">
-          <p style={{ fontSize: "12px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: "#4A6FA5", marginBottom: "32px" }}>Technology Stack</p>
-          <div className="grid-3">
+          <Label>Technology Stack</Label>
+          <h2 className="text-2xl md:text-4xl text-[#0A0F1E] mb-10">Built on proven tools.</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {stack.map(s => (
-              <div key={s.cat} style={{ background: "white", borderRadius: "12px", border: "1px solid rgba(15,23,42,0.06)", padding: "28px" }}>
-                <h3 style={{ fontFamily: "Georgia,serif", fontSize: "17px", color: "#0A0F1E", marginBottom: "16px" }}>{s.cat}</h3>
-                <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
+              <div key={s.cat} className="card p-6">
+                <h3 className="font-serif text-lg text-[#0A0F1E] mb-4">{s.cat}</h3>
+                <div className="flex flex-wrap gap-2">
                   {s.items.map(item => (
-                    <span key={item} style={{ padding: "5px 12px", background: "#EEF2F7", borderRadius: "6px", fontSize: "13px", color: "#4A5568" }}>{item}</span>
+                    <span key={item} className="px-2.5 py-1 bg-[#EEF2F7] rounded text-xs text-[#4A5568]">{item}</span>
                   ))}
                 </div>
               </div>
@@ -55,19 +62,20 @@ export default function TechnologyPage() {
         </div>
       </section>
 
-      <section style={{ padding: "clamp(48px,7vw,80px) 0", background: "#E2E8F0" }}>
+      {/* Security */}
+      <section className="py-16 md:py-24 bg-[#E2E8F0]">
         <div className="wrap">
-          <div className="flex-col-mobile" style={{ alignItems:"start" }}>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
             <div>
-              <p style={{ fontSize: "12px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: "#4A6FA5", marginBottom: "16px" }}>Security</p>
-              <h2 style={{ fontFamily: "Georgia,serif", fontSize: "clamp(1.8rem,3vw,2.4rem)", color: "#0A0F1E", marginBottom: "20px", lineHeight: 1.2 }}>Security built in from the start.</h2>
-              <p style={{ fontSize: "17px", color: "#2D3748", lineHeight: 1.85 }}>Security is not something we add at the end. We design for it from the first architecture decision. Every system we build reflects the sensitivity of the environment it will run in.</p>
+              <Label>Security</Label>
+              <h2 className="text-2xl md:text-4xl text-[#0A0F1E] mb-5">Security built in from the start.</h2>
+              <p className="text-base md:text-lg text-[#2D3748] leading-relaxed">Security is not something we add at the end. We design for it from the first architecture decision. Every system we build reflects the sensitivity of the environment it will run in.</p>
             </div>
-            <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+            <div className="flex flex-col gap-3">
               {["SOC 2 Type II Certified", "ISO 27001 Compliant", "HIPAA Compliant", "GDPR Ready", "FedRAMP Authorised", "Zero trust architecture on all deployments", "End to end encryption in transit and at rest", "Full audit logging and immutable trail"].map(item => (
-                <div key={item} style={{ display: "flex", gap: "12px", alignItems: "center", padding: "14px 18px", background: "white", borderRadius: "8px", border: "1px solid rgba(15,23,42,0.06)" }}>
-                  <div style={{ width: "8px", height: "8px", borderRadius: "50%", background: "#4A6FA5", flexShrink: 0 }} />
-                  <span style={{ fontSize: "15px", color: "#2D3748", fontWeight: 500 }}>{item}</span>
+                <div key={item} className="flex gap-3 items-center px-4 py-3 bg-white rounded-lg border border-[#0A0F1E]/06">
+                  <div className="w-2 h-2 rounded-full bg-[#4A6FA5] flex-shrink-0" />
+                  <span className="text-sm font-medium text-[#2D3748]">{item}</span>
                 </div>
               ))}
             </div>

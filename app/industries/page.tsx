@@ -9,35 +9,31 @@ export const metadata = { title: "Industries" };
 export default function IndustriesPage() {
   return (
     <>
-      <PageHeader
-        label="Industries"
-        title="We understand the sector you work in."
-        sub="Every industry has its own rules, pressures and constraints. We have built for most of them and we bring that experience to every engagement."
-      />
-      <section style={{ padding: "clamp(48px,7vw,80px) 0", background: "#EEF2F7" }}>
+      <PageHeader label="Industries" title="We understand the sector you work in." sub="Every industry has its own rules, pressures and constraints. We have built for most of them." />
+      <section className="py-16 md:py-24 bg-[#EEF2F7]">
         <div className="wrap">
-          <div className="grid-2">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             {industries.map(ind => (
-              <Link key={ind.slug} href={`/industries/${ind.slug}`} className="card" style={{ display: "block", overflow: "hidden" }}>
-                <div style={{ position: "relative", height: "220px" }}>
-                  <Image src={(ind as any).image} alt={ind.title} fill style={{ objectFit: "cover" }} />
-                  <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(10,15,30,0.75) 0%, rgba(10,15,30,0.2) 60%)" }} />
-                  <div style={{ position: "absolute", bottom: "20px", left: "24px", right: "24px" }}>
-                    <h2 style={{ fontFamily: "Georgia,serif", fontSize: "20px", color: "white", marginBottom: "4px" }}>{ind.title}</h2>
-                    <p style={{ fontSize: "14px", color: "rgba(255,255,255,0.7)" }}>{ind.subtitle}</p>
+              <Link key={ind.slug} href={`/industries/${ind.slug}`} className="card block overflow-hidden">
+                <div className="relative h-52 md:h-60">
+                  <Image src={(ind as any).image} alt={ind.title} fill className="object-cover" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0A0F1E]/75 via-[#0A0F1E]/20 to-transparent" />
+                  <div className="absolute bottom-0 left-0 right-0 p-5">
+                    <h2 className="font-serif text-xl text-white mb-1">{ind.title}</h2>
+                    <p className="text-sm text-white/70">{ind.subtitle}</p>
                   </div>
                 </div>
-                <div style={{ padding: "24px 28px" }}>
-                  <p style={{ fontSize: "15px", color: "#4A5568", lineHeight: 1.78, marginBottom: "20px" }}>{ind.description.substring(0, 160)}...</p>
-                  <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: "16px", marginBottom: "20px" }}>
+                <div className="p-5 md:p-6">
+                  <p className="text-sm text-[#4A5568] leading-relaxed mb-5">{ind.description.substring(0, 160)}...</p>
+                  <div className="grid grid-cols-3 gap-3 mb-5">
                     {ind.stats.map((s, i) => (
-                      <div key={i} style={{ borderLeft: "2px solid rgba(74,111,165,0.3)", paddingLeft: "12px" }}>
-                        <div style={{ fontFamily: "Georgia,serif", fontSize: "1.5rem", color: "#0A0F1E" }}>{s.metric}</div>
-                        <p style={{ fontSize: "12px", color: "#718096", lineHeight: 1.4 }}>{s.label}</p>
+                      <div key={i} className="border-l-2 border-[#4A6FA5]/30 pl-3">
+                        <div className="font-serif text-xl text-[#0A0F1E]">{s.metric}</div>
+                        <p className="text-xs text-[#718096] leading-snug">{s.label}</p>
                       </div>
                     ))}
                   </div>
-                  <span style={{ display: "inline-flex", alignItems: "center", gap: "6px", fontSize: "14px", fontWeight: 500, color: "#4A6FA5" }}>Explore <ArrowRight size={13} /></span>
+                  <span className="inline-flex items-center gap-2 text-sm font-medium text-[#4A6FA5]">Explore <ArrowRight size={13} /></span>
                 </div>
               </Link>
             ))}

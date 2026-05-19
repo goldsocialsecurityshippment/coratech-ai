@@ -2,89 +2,48 @@ import Link from "next/link";
 
 export function Footer() {
   const cols = [
-    {
-      heading: "Solutions",
-      links: [
-        ["AI Automation", "/solutions/ai-automation"],
-        ["AI Agents", "/solutions/ai-agents"],
-        ["Enterprise Software", "/solutions/enterprise-software"],
-        ["Data Intelligence", "/solutions/data-intelligence"],
-        ["Compliance Systems", "/solutions/compliance-systems"],
-        ["Cloud Infrastructure", "/solutions/cloud-infrastructure"],
-      ],
-    },
-    {
-      heading: "Industries",
-      links: [
-        ["Financial Services", "/industries/finance"],
-        ["Healthcare", "/industries/healthcare"],
-        ["Legal Services", "/industries/legal"],
-        ["Logistics", "/industries/logistics"],
-        ["Government", "/industries/government"],
-        ["Real Estate", "/industries/real-estate"],
-      ],
-    },
-    {
-      heading: "Company",
-      links: [
-        ["About", "/about"],
-        ["Why Use AI", "/why-ai"],
-        ["Case Studies", "/case-studies"],
-        ["Insights", "/insights"],
-        ["Technology", "/technology"],
-        ["Contact", "/contact"],
-      ],
-    },
+    { heading: "Solutions", links: [["AI Automation", "/solutions/ai-automation"], ["AI Agents", "/solutions/ai-agents"], ["Enterprise Software", "/solutions/enterprise-software"], ["Data Intelligence", "/solutions/data-intelligence"], ["Compliance Systems", "/solutions/compliance-systems"], ["Cloud Infrastructure", "/solutions/cloud-infrastructure"]] },
+    { heading: "Industries", links: [["Financial Services", "/industries/finance"], ["Healthcare", "/industries/healthcare"], ["Legal Services", "/industries/legal"], ["Logistics", "/industries/logistics"], ["Government", "/industries/government"], ["Education", "/industries/education"]] },
+    { heading: "Company", links: [["About", "/about"], ["Why Use AI", "/why-ai"], ["Case Studies", "/case-studies"], ["Insights", "/insights"], ["Technology", "/technology"], ["Contact", "/contact"]] },
   ];
 
   return (
-    <footer style={{ background: "#0A0F1E", color: "white" }}>
-      <style>{`
-        .footer-link { font-size:14px; color:rgba(255,255,255,0.55); transition:color 0.2s; display:block; }
-        .footer-link:hover { color:white; }
-      `}</style>
-      <div className="wrap" style={{ paddingTop: "72px", paddingBottom: "48px" }}>
-        <div className="footer-grid" style={{ paddingBottom: "48px", borderBottom: "1px solid rgba(255,255,255,0.08)" }}>
+    <footer className="bg-[#0A0F1E] text-white">
+      <div className="wrap pt-14 pb-10 md:pt-20 md:pb-14">
+        {/* Top grid */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 pb-12 border-b border-white/10">
           {/* Brand */}
-          <div>
-            <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "20px" }}>
-              <div style={{ width: "32px", height: "32px", background: "white", borderRadius: "6px", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                <span style={{ fontFamily: "Georgia,serif", fontSize: "15px", color: "#0A0F1E" }}>C</span>
+          <div className="col-span-2 md:col-span-1">
+            <div className="flex items-center gap-2.5 mb-5">
+              <div className="w-8 h-8 bg-white rounded-md flex items-center justify-center">
+                <span className="font-serif text-sm text-[#0A0F1E]">C</span>
               </div>
-              <span style={{ fontWeight: 500, fontSize: "15px" }}>Coratech AI</span>
+              <span className="font-medium text-[15px]">Coratech AI</span>
             </div>
-            <p style={{ color: "rgba(255,255,255,0.5)", fontSize: "15px", lineHeight: 1.75, maxWidth: "260px", marginBottom: "24px" }}>
-              Enterprise AI and technology infrastructure for organisations that cannot afford to get it wrong.
-            </p>
-
-            {/* Location */}
-            <div style={{ marginBottom: "20px" }}>
-              <p style={{ fontSize: "12px", fontWeight: 600, letterSpacing: "0.08em", textTransform: "uppercase", color: "rgba(255,255,255,0.3)", marginBottom: "8px" }}>Based in</p>
-              <p style={{ fontSize: "14px", color: "rgba(255,255,255,0.6)" }}>Accra, Ghana</p>
-              <p style={{ fontSize: "13px", color: "rgba(255,255,255,0.35)", marginTop: "2px" }}>Operations across London and beyond</p>
+            <p className="text-white/50 text-sm leading-relaxed mb-5">Enterprise AI and technology infrastructure for organisations that cannot afford to get it wrong.</p>
+            <div className="mb-4">
+              <p className="text-[11px] font-semibold tracking-widest uppercase text-white/30 mb-2">Based in</p>
+              <p className="text-sm text-white/60">Accra, Ghana</p>
+              <p className="text-xs text-white/35 mt-1">Operations across London and beyond</p>
             </div>
-
-            {/* Contact */}
-            <div style={{ marginBottom: "20px" }}>
-              <p style={{ fontSize: "12px", fontWeight: 600, letterSpacing: "0.08em", textTransform: "uppercase", color: "rgba(255,255,255,0.3)", marginBottom: "8px" }}>Contact</p>
-              <a href="mailto:hello@coratech.com" style={{ fontSize: "14px", color: "rgba(255,255,255,0.6)", display: "block", marginBottom: "4px" }}>hello@coratech.com</a>
-              <p style={{ fontSize: "13px", color: "rgba(255,255,255,0.4)" }}>+233 53 602 6175</p>
-              <p style={{ fontSize: "13px", color: "rgba(255,255,255,0.4)" }}>+44 783 295 6639</p>
+            <div className="mb-4">
+              <p className="text-[11px] font-semibold tracking-widest uppercase text-white/30 mb-2">Contact</p>
+              <a href="mailto:hello@coratech.com" className="text-sm text-white/60 block mb-1 hover:text-white transition-colors">hello@coratech.com</a>
+              <p className="text-xs text-white/40">+233 53 602 6175</p>
+              <p className="text-xs text-white/40">+44 783 295 6639</p>
             </div>
-
-            {/* Canmore */}
-            <div style={{ paddingTop: "16px", borderTop: "1px solid rgba(255,255,255,0.08)" }}>
-              <p style={{ fontSize: "12px", color: "rgba(255,255,255,0.3)" }}>Part of <span style={{ color: "rgba(255,255,255,0.5)", fontWeight: 500 }}>Canmore Digital</span></p>
+            <div className="pt-4 border-t border-white/10">
+              <p className="text-xs text-white/30">Part of <span className="text-white/50 font-medium">Canmore Digital</span></p>
             </div>
           </div>
 
           {/* Link columns */}
           {cols.map(col => (
             <div key={col.heading}>
-              <p style={{ fontSize: "11px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(255,255,255,0.3)", marginBottom: "20px" }}>{col.heading}</p>
-              <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+              <p className="text-[11px] font-semibold tracking-widest uppercase text-white/30 mb-5">{col.heading}</p>
+              <div className="flex flex-col gap-3">
                 {col.links.map(([label, href]) => (
-                  <Link key={href} href={href} className="footer-link">{label}</Link>
+                  <Link key={href} href={href} className="text-sm text-white/55 hover:text-white transition-colors">{label}</Link>
                 ))}
               </div>
             </div>
@@ -92,13 +51,11 @@ export function Footer() {
         </div>
 
         {/* Bottom */}
-        <div style={{ paddingTop: "32px", display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: "16px" }}>
-          <p style={{ fontSize: "13px", color: "rgba(255,255,255,0.3)" }}>
-            © {new Date().getFullYear()} Coratech AI. Part of Canmore Digital. All rights reserved.
-          </p>
-          <div style={{ display: "flex", gap: "24px" }}>
-            <Link href="/privacy" style={{ fontSize: "13px", color: "rgba(255,255,255,0.3)" }}>Privacy</Link>
-            <Link href="/terms" style={{ fontSize: "13px", color: "rgba(255,255,255,0.3)" }}>Terms</Link>
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-xs text-white/30 text-center sm:text-left">© {new Date().getFullYear()} Coratech AI. Part of Canmore Digital. All rights reserved.</p>
+          <div className="flex gap-6">
+            <Link href="/privacy" className="text-xs text-white/30 hover:text-white/60 transition-colors">Privacy</Link>
+            <Link href="/terms" className="text-xs text-white/30 hover:text-white/60 transition-colors">Terms</Link>
           </div>
         </div>
       </div>

@@ -21,78 +21,86 @@ export default function InsightPage({ params }: { params: { slug: string } }) {
 
   return (
     <>
-      {/* Hero with image */}
-      <section style={{ position: "relative", paddingTop: "clamp(110px,13vw,160px)", paddingBottom: "clamp(48px,6vw,80px)", overflow: "hidden" }}>
-        <Image src={(a as any).image} alt={a.title} fill style={{ objectFit: "cover", objectPosition: "center" }} />
-        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(10,15,30,0.85) 0%, rgba(10,15,30,0.75) 100%)" }} />
-        <div className="wrap" style={{ position: "relative", zIndex: 1 }}>
-          <Link href="/insights" style={{ display: "inline-flex", alignItems: "center", gap: "8px", color: "rgba(255,255,255,0.5)", fontSize: "14px", marginBottom: "40px" }}>
+      {/* Hero */}
+      <section className="relative pt-28 md:pt-40 pb-14 md:pb-20 overflow-hidden">
+        <Image src={(a as any).image} alt={a.title} fill className="object-cover" />
+        <div className="absolute inset-0 bg-[#0A0F1E]/82" />
+        <div className="relative z-10 wrap">
+          <Link href="/insights" className="inline-flex items-center gap-2 text-sm text-white/50 hover:text-white/80 transition-colors mb-10">
             <ArrowLeft size={14} /> All Insights
           </Link>
-          <div style={{ maxWidth: "720px" }}>
-            <div style={{ display: "flex", gap: "12px", alignItems: "center", marginBottom: "24px" }}>
-              <span style={{ padding: "4px 12px", background: "rgba(255,255,255,0.12)", borderRadius: "20px", fontSize: "13px", color: "rgba(255,255,255,0.8)" }}>{a.category}</span>
-              <span style={{ fontSize: "14px", color: "rgba(255,255,255,0.45)" }}>{a.date} · {a.readTime}</span>
+          <div className="max-w-2xl">
+            <div className="flex flex-wrap items-center gap-3 mb-5">
+              <span className="px-3 py-1 bg-white/12 rounded-full text-xs text-white/80">{a.category}</span>
+              <span className="text-xs text-white/45">{a.date} · {a.readTime}</span>
             </div>
-            <h1 style={{ fontFamily: "Georgia,serif", fontSize: "clamp(2rem,3.5vw,3rem)", color: "white", marginBottom: "20px", lineHeight: 1.15, letterSpacing: "-0.02em" }}>{a.title}</h1>
-            <p style={{ fontSize: "19px", color: "rgba(255,255,255,0.65)", lineHeight: 1.7 }}>{a.subtitle}</p>
+            <h1 className="text-2xl md:text-4xl lg:text-5xl text-white mb-5 leading-snug">{a.title}</h1>
+            <p className="text-base md:text-lg text-[#6B8FBF] font-medium leading-snug">{a.subtitle}</p>
           </div>
         </div>
       </section>
 
       {/* Body */}
-      <section style={{ padding: "clamp(48px,7vw,80px) 0", background: "#EEF2F7" }}>
+      <section className="py-16 md:py-24 bg-[#EEF2F7]">
         <div className="wrap">
-          <div className="sidebar-layout" style={{ alignItems:"start" }}>
-            <article>
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_260px] gap-12">
+            <article className="max-w-2xl">
               {a.body.map((para, i) => (
-                <p key={i} style={{ fontSize: "18px", color: "#1A202C", lineHeight: 1.9, marginBottom: "28px" }}>{para}</p>
+                <p key={i} className="text-base md:text-lg text-[#1A202C] leading-relaxed mb-7">{para}</p>
               ))}
             </article>
 
-            {/* Sidebar */}
-            <div className="hide-mobile" style={{ position: "sticky", top: "96px" }}>
-              <div className="card" style={{ padding: "28px", marginBottom: "16px" }}>
-                <p style={{ fontSize: "12px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: "#718096", marginBottom: "16px" }}>About This Piece</p>
-                <div style={{ display: "flex", flexDirection: "column", gap: "14px" }}>
+            {/* Sidebar - hidden on small, visible on large */}
+            <div className="hidden lg:block sticky top-24 self-start">
+              <div className="card p-6 mb-4">
+                <p className="text-xs font-semibold tracking-widest uppercase text-[#718096] mb-4">About This Piece</p>
+                <div className="flex flex-col gap-3">
                   {[["Category", a.category], ["Published", a.date], ["Read time", a.readTime]].map(([k, v]) => (
                     <div key={k}>
-                      <p style={{ fontSize: "12px", color: "#718096", marginBottom: "2px" }}>{k}</p>
-                      <p style={{ fontSize: "14px", fontWeight: 500, color: "#0A0F1E" }}>{v}</p>
+                      <p className="text-xs text-[#718096] mb-0.5">{k}</p>
+                      <p className="text-sm font-medium text-[#0A0F1E]">{v}</p>
                     </div>
                   ))}
                 </div>
               </div>
-              <div style={{ background: "#E2E8F0", borderRadius: "12px", padding: "24px" }}>
-                <p style={{ fontSize: "15px", fontWeight: 500, color: "#0A0F1E", marginBottom: "10px" }}>Talk to our team about this</p>
-                <p style={{ fontSize: "14px", color: "#4A5568", lineHeight: 1.7, marginBottom: "16px" }}>We are happy to explore how any of this applies to your specific situation.</p>
-                <Link href="/contact" style={{ display: "inline-flex", alignItems: "center", gap: "6px", fontSize: "14px", fontWeight: 500, color: "#0A0F1E", borderBottom: "1.5px solid #0A0F1E", paddingBottom: "2px" }}>
-                  Get in touch <ArrowRight size={13} />
+              <div className="bg-[#E2E8F0] rounded-xl p-5">
+                <p className="text-sm font-medium text-[#0A0F1E] mb-2">Talk to our team about this</p>
+                <p className="text-sm text-[#4A5568] leading-relaxed mb-4">We are happy to explore how these ideas apply to your specific situation.</p>
+                <Link href="/contact" className="inline-flex items-center gap-2 text-sm font-medium text-[#0A0F1E] border-b border-[#0A0F1E] pb-0.5">
+                  Get in touch <ArrowRight size={12} />
                 </Link>
               </div>
             </div>
+          </div>
+
+          {/* Mobile CTA card */}
+          <div className="lg:hidden mt-10 bg-[#E2E8F0] rounded-xl p-5">
+            <p className="text-sm font-medium text-[#0A0F1E] mb-2">Discuss this with our team</p>
+            <Link href="/contact" className="inline-flex items-center gap-2 text-sm font-medium text-[#4A6FA5]">
+              Get in touch <ArrowRight size={12} />
+            </Link>
           </div>
         </div>
       </section>
 
       {/* Related */}
       {related.length > 0 && (
-        <section style={{ padding: "clamp(48px,7vw,80px) 0", background: "#E2E8F0", borderTop: "1px solid rgba(15,23,42,0.07)" }}>
+        <section className="py-16 md:py-24 bg-[#E2E8F0] border-t border-[#0A0F1E]/07">
           <div className="wrap">
-            <h2 style={{ fontFamily: "Georgia,serif", fontSize: "1.8rem", color: "#0A0F1E", marginBottom: "32px" }}>Related reading</h2>
-            <div className="grid-2">
+            <h2 className="font-serif text-2xl md:text-3xl text-[#0A0F1E] mb-8">Related reading</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {related.map(r => (
-                <Link key={r.slug} href={`/insights/${r.slug}`} className="card" style={{ display: "block", overflow: "hidden" }}>
-                  <div style={{ position: "relative", height: "160px" }}>
-                    <Image src={(r as any).image} alt={r.title} fill style={{ objectFit: "cover" }} />
-                    <div style={{ position: "absolute", inset: 0, background: "rgba(10,15,30,0.35)" }} />
-                    <div style={{ position: "absolute", top: "12px", left: "14px" }}>
-                      <span style={{ padding: "3px 10px", background: "rgba(255,255,255,0.9)", borderRadius: "20px", fontSize: "12px", color: "#4A6FA5", fontWeight: 500 }}>{r.category}</span>
+                <Link key={r.slug} href={`/insights/${r.slug}`} className="card block overflow-hidden">
+                  <div className="relative h-40">
+                    <Image src={(r as any).image} alt={r.title} fill className="object-cover" />
+                    <div className="absolute inset-0 bg-[#0A0F1E]/35" />
+                    <div className="absolute top-3 left-3">
+                      <span className="px-2.5 py-1 bg-white/90 rounded-full text-xs text-[#4A6FA5] font-medium">{r.category}</span>
                     </div>
                   </div>
-                  <div style={{ padding: "22px 24px" }}>
-                    <h3 style={{ fontFamily: "Georgia,serif", fontSize: "16px", color: "#0A0F1E", lineHeight: 1.4, marginBottom: "8px" }}>{r.title}</h3>
-                    <p style={{ fontSize: "14px", color: "#4A5568", lineHeight: 1.7 }}>{r.excerpt.substring(0, 110)}...</p>
+                  <div className="p-5">
+                    <h3 className="font-serif text-base text-[#0A0F1E] leading-snug mb-2">{r.title}</h3>
+                    <p className="text-sm text-[#4A5568] leading-relaxed">{r.excerpt.substring(0, 110)}...</p>
                   </div>
                 </Link>
               ))}

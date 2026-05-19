@@ -3,21 +3,21 @@ import { ArrowRight } from "lucide-react";
 
 export function Label({ children }: { children: React.ReactNode }) {
   return (
-    <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "20px" }}>
-      <div style={{ width: "28px", height: "1.5px", background: "#4A6FA5" }} />
-      <span style={{ fontSize: "12px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: "#4A6FA5" }}>{children}</span>
+    <div className="flex items-center gap-3 mb-5">
+      <div className="w-7 h-px bg-[#4A6FA5]" />
+      <span className="text-xs font-semibold tracking-[0.1em] uppercase text-[#4A6FA5]">{children}</span>
     </div>
   );
 }
 
 export function PageHeader({ label, title, sub }: { label: string; title: string; sub?: string }) {
   return (
-    <section style={{ paddingTop: "144px", paddingBottom: "80px", background: "#EEF2F7", borderBottom: "1px solid rgba(15,23,42,0.08)" }}>
+    <section className="pt-28 md:pt-40 pb-14 md:pb-20 bg-[#EEF2F7] border-b border-[#0A0F1E]/08">
       <div className="wrap">
-        <div style={{ maxWidth: "720px" }}>
+        <div className="max-w-3xl">
           <Label>{label}</Label>
-          <h1 style={{ fontFamily: "Georgia,serif", fontSize: "clamp(2.2rem,4vw,3.8rem)", color: "#0A0F1E", marginBottom: "20px", lineHeight: 1.1, letterSpacing: "-0.025em" }}>{title}</h1>
-          {sub && <p style={{ fontSize: "18px", color: "#4A5568", lineHeight: 1.8, maxWidth: "560px" }}>{sub}</p>}
+          <h1 className="text-3xl md:text-5xl lg:text-6xl text-[#0A0F1E] mb-5">{title}</h1>
+          {sub && <p className="text-base md:text-lg text-[#4A5568] leading-relaxed max-w-xl">{sub}</p>}
         </div>
       </div>
     </section>
@@ -26,17 +26,13 @@ export function PageHeader({ label, title, sub }: { label: string; title: string
 
 export function CTA({ title, sub, btn, href, dark }: { title: string; sub?: string; btn: string; href: string; dark?: boolean }) {
   return (
-    <section style={{ padding: "96px 0", background: dark ? "#0A0F1E" : "#E2E8F0" }}>
-      <div className="wrap" style={{ textAlign: "center", maxWidth: "600px", margin: "0 auto" }}>
-        <h2 style={{ fontFamily: "Georgia,serif", fontSize: "clamp(1.8rem,3vw,2.8rem)", color: dark ? "white" : "#0A0F1E", marginBottom: "16px", lineHeight: 1.2 }}>{title}</h2>
-        {sub && <p style={{ fontSize: "17px", color: dark ? "rgba(255,255,255,0.6)" : "#4A5568", marginBottom: "40px", lineHeight: 1.8 }}>{sub}</p>}
-        <Link href={href} style={{
-          display: "inline-flex", alignItems: "center", gap: "8px",
-          padding: "14px 32px", borderRadius: "8px", fontSize: "15px", fontWeight: 500,
-          background: dark ? "white" : "#0A0F1E",
-          color: dark ? "#0A0F1E" : "white",
-          textDecoration: "none",
-        }}>{btn} <ArrowRight size={15} /></Link>
+    <section className={`py-16 md:py-24 ${dark ? "bg-[#0A0F1E]" : "bg-[#E2E8F0]"}`}>
+      <div className="wrap text-center max-w-2xl mx-auto">
+        <h2 className={`text-2xl md:text-4xl mb-4 ${dark ? "text-white" : "text-[#0A0F1E]"}`}>{title}</h2>
+        {sub && <p className={`text-base md:text-lg mb-10 leading-relaxed ${dark ? "text-white/60" : "text-[#4A5568]"}`}>{sub}</p>}
+        <Link href={href} className={`inline-flex items-center gap-2 px-7 py-3.5 rounded-lg text-[15px] font-semibold transition-all ${dark ? "bg-white text-[#0A0F1E] hover:bg-white/90" : "bg-[#0A0F1E] text-white hover:bg-[#1a2744]"}`}>
+          {btn} <ArrowRight size={15} />
+        </Link>
       </div>
     </section>
   );
@@ -44,11 +40,11 @@ export function CTA({ title, sub, btn, href, dark }: { title: string; sub?: stri
 
 export function StatBar({ stats }: { stats: { metric: string; label: string }[] }) {
   return (
-    <div style={{ display: "grid", gridTemplateColumns: `repeat(${stats.length}, 1fr)`, gap: "1px", background: "rgba(15,23,42,0.08)", borderRadius: "12px", overflow: "hidden" }}>
+    <div className={`grid grid-cols-${Math.min(stats.length, 3)} gap-px bg-[#0A0F1E]/10 rounded-xl overflow-hidden`}>
       {stats.map((s, i) => (
-        <div key={i} style={{ padding: "32px", background: "white" }}>
-          <div style={{ fontFamily: "Georgia,serif", fontSize: "2.4rem", color: "#0A0F1E", marginBottom: "6px", lineHeight: 1 }}>{s.metric}</div>
-          <p style={{ fontSize: "14px", color: "#4A5568", lineHeight: 1.5 }}>{s.label}</p>
+        <div key={i} className="p-6 md:p-8 bg-white">
+          <div className="font-serif text-3xl md:text-4xl text-[#0A0F1E] mb-1 leading-none">{s.metric}</div>
+          <p className="text-sm text-[#4A5568] leading-snug">{s.label}</p>
         </div>
       ))}
     </div>

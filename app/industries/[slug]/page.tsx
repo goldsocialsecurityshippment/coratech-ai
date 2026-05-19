@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowLeft } from "lucide-react";
 import { industries } from "@/lib/data";
-import { CTA, StatBar } from "@/components/ui/shared";
+import { CTA, Label } from "@/components/ui/shared";
 
 export async function generateStaticParams() {
   return industries.map(i => ({ slug: i.slug }));
@@ -20,39 +20,46 @@ export default function IndustryPage({ params }: { params: { slug: string } }) {
 
   return (
     <>
-      {/* Hero with image */}
-      <section style={{ position: "relative", paddingTop: "clamp(110px,13vw,160px)", paddingBottom: "clamp(48px,6vw,80px)", overflow: "hidden" }}>
-        <Image src={(ind as any).image} alt={ind.title} fill style={{ objectFit: "cover", objectPosition: "center" }} />
-        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right, rgba(10,15,30,0.92) 0%, rgba(10,15,30,0.7) 100%)" }} />
-        <div className="wrap" style={{ position: "relative", zIndex: 1 }}>
-          <Link href="/industries" style={{ display: "inline-flex", alignItems: "center", gap: "8px", color: "rgba(255,255,255,0.5)", fontSize: "14px", marginBottom: "40px" }}>
+      {/* Hero */}
+      <section className="relative pt-28 md:pt-40 pb-14 md:pb-20 overflow-hidden">
+        <Image src={(ind as any).image} alt={ind.title} fill className="object-cover" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0A0F1E]/92 to-[#0A0F1E]/65" />
+        <div className="relative z-10 wrap">
+          <Link href="/industries" className="inline-flex items-center gap-2 text-sm text-white/50 hover:text-white/80 transition-colors mb-10">
             <ArrowLeft size={14} /> All Industries
           </Link>
-          <div style={{ maxWidth: "640px" }}>
-            <h1 style={{ fontFamily: "Georgia,serif", fontSize: "clamp(2.4rem,4.5vw,4rem)", color: "white", marginBottom: "16px", lineHeight: 1.1, letterSpacing: "-0.025em" }}>{ind.title}</h1>
-            <p style={{ fontSize: "19px", color: "rgba(255,255,255,0.7)", fontWeight: 400, marginBottom: "48px", lineHeight: 1.7 }}>{ind.subtitle}</p>
-            <StatBar stats={ind.stats} />
+          <div className="max-w-2xl">
+            <h1 className="text-3xl md:text-5xl text-white mb-4">{ind.title}</h1>
+            <p className="text-base md:text-lg text-white/70 mb-10">{ind.subtitle}</p>
+            <div className="grid grid-cols-3 gap-px bg-white/10 rounded-xl overflow-hidden">
+              {ind.stats.map((s, i) => (
+                <div key={i} className="p-5 md:p-7 bg-white/08">
+                  <div className="font-serif text-2xl md:text-3xl text-white mb-1">{s.metric}</div>
+                  <p className="text-xs text-white/50">{s.label}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Overview and challenges */}
-      <section style={{ padding: "clamp(48px,7vw,80px) 0", background: "#EEF2F7" }}>
+      {/* Overview + Challenges */}
+      <section className="py-16 md:py-24 bg-[#EEF2F7]">
         <div className="wrap">
-          <div className="flex-col-mobile">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
             <div>
-              <p style={{ fontSize: "12px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: "#4A6FA5", marginBottom: "16px" }}>Overview</p>
-              <h2 style={{ fontFamily: "Georgia,serif", fontSize: "clamp(1.8rem,3vw,2.4rem)", color: "#0A0F1E", marginBottom: "24px", lineHeight: 1.2 }}>How we see this sector.</h2>
-              <p style={{ fontSize: "18px", color: "#2D3748", lineHeight: 1.85 }}>{ind.description}</p>
+              <Label>Overview</Label>
+              <h2 className="text-2xl md:text-4xl text-[#0A0F1E] mb-5">How we see this sector.</h2>
+              <p className="text-base md:text-lg text-[#2D3748] leading-relaxed">{ind.description}</p>
             </div>
             <div>
-              <p style={{ fontSize: "12px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: "#4A6FA5", marginBottom: "16px" }}>Key Challenges</p>
-              <h3 style={{ fontFamily: "Georgia,serif", fontSize: "clamp(1.5rem,2.5vw,1.9rem)", color: "#0A0F1E", marginBottom: "24px", lineHeight: 1.3 }}>What organisations in this space are dealing with.</h3>
+              <Label>Key Challenges</Label>
+              <h3 className="text-xl md:text-3xl text-[#0A0F1E] mb-5">What organisations in this space deal with.</h3>
               <div>
                 {ind.challenges.map((c, i) => (
-                  <div key={i} style={{ display: "flex", gap: "16px", padding: "18px 0", borderBottom: "1px solid rgba(15,23,42,0.07)" }}>
-                    <div style={{ width: "24px", height: "24px", borderRadius: "50%", border: "1.5px solid #94A3B8", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, fontSize: "12px", color: "#4A6FA5", fontWeight: 600 }}>{i + 1}</div>
-                    <span style={{ fontSize: "17px", color: "#2D3748", lineHeight: 1.75 }}>{c}</span>
+                  <div key={i} className="flex gap-4 py-4 border-b border-[#0A0F1E]/07 last:border-0">
+                    <div className="w-6 h-6 rounded-full border-2 border-[#94A3B8] flex items-center justify-center flex-shrink-0 text-xs text-[#4A6FA5] font-semibold">{i + 1}</div>
+                    <span className="text-base text-[#2D3748] leading-relaxed">{c}</span>
                   </div>
                 ))}
               </div>
@@ -62,15 +69,15 @@ export default function IndustryPage({ params }: { params: { slug: string } }) {
       </section>
 
       {/* Solutions */}
-      <section style={{ padding: "clamp(48px,7vw,80px) 0", background: "#E2E8F0" }}>
+      <section className="py-16 md:py-24 bg-[#E2E8F0]">
         <div className="wrap">
-          <p style={{ fontSize: "12px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: "#4A6FA5", marginBottom: "16px" }}>What We Build</p>
-          <h2 style={{ fontFamily: "Georgia,serif", fontSize: "clamp(1.8rem,3vw,2.4rem)", color: "#0A0F1E", marginBottom: "40px", lineHeight: 1.2 }}>How we can help your organisation.</h2>
-          <div className="grid-2">
+          <Label>What We Build</Label>
+          <h2 className="text-2xl md:text-4xl text-[#0A0F1E] mb-10">How we can help.</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {ind.solutions.map((sol, i) => (
-              <div key={i} className="card" style={{ padding: "24px", display: "flex", gap: "16px" }}>
-                <div style={{ width: "10px", height: "10px", borderRadius: "50%", background: "#4A6FA5", flexShrink: 0, marginTop: "7px" }} />
-                <p style={{ fontSize: "17px", color: "#2D3748", lineHeight: 1.75 }}>{sol}</p>
+              <div key={i} className="card p-5 flex gap-4">
+                <div className="w-2.5 h-2.5 rounded-full bg-[#4A6FA5] flex-shrink-0 mt-1.5" />
+                <p className="text-base text-[#2D3748] leading-relaxed">{sol}</p>
               </div>
             ))}
           </div>
@@ -78,19 +85,19 @@ export default function IndustryPage({ params }: { params: { slug: string } }) {
       </section>
 
       {/* Workflow */}
-      <section style={{ padding: "clamp(48px,7vw,80px) 0", background: "#EEF2F7" }}>
+      <section className="py-16 md:py-24 bg-[#EEF2F7]">
         <div className="wrap">
-          <p style={{ fontSize: "12px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: "#4A6FA5", marginBottom: "32px" }}>Typical Workflow</p>
-          <div className="grid-3">
+          <Label>Typical Workflow</Label>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             {[
-              { phase: "01", title: "Intake and classification", text: "Documents, requests and data come in from multiple sources and get automatically sorted and routed to the right process." },
-              { phase: "02", title: "Processing and enrichment", text: "The system reads, extracts and validates information, applying your business logic and pulling in external data where needed." },
-              { phase: "03", title: "Review and action", text: "Routine cases are handled automatically. Anything that genuinely needs a human gets flagged and prioritised for review." },
+              { phase: "01", title: "Intake and classification", text: "Documents and requests come in and get automatically sorted and routed to the right process." },
+              { phase: "02", title: "Processing and enrichment", text: "The system reads, extracts and validates information, applying your business logic and rules." },
+              { phase: "03", title: "Review and action", text: "Routine cases are handled automatically. Anything that needs a human gets flagged immediately." },
             ].map(step => (
-              <div key={step.phase} className="card" style={{ padding: "28px" }}>
-                <div style={{ fontFamily: "Georgia,serif", fontSize: "2rem", color: "rgba(15,23,42,0.12)", marginBottom: "16px" }}>{step.phase}</div>
-                <h3 style={{ fontFamily: "Georgia,serif", fontSize: "17px", color: "#0A0F1E", marginBottom: "12px" }}>{step.title}</h3>
-                <p style={{ fontSize: "15px", color: "#4A5568", lineHeight: 1.75 }}>{step.text}</p>
+              <div key={step.phase} className="card p-6">
+                <div className="font-serif text-3xl text-[#0A0F1E]/12 mb-4">{step.phase}</div>
+                <h3 className="font-serif text-lg text-[#0A0F1E] mb-3">{step.title}</h3>
+                <p className="text-sm text-[#4A5568] leading-relaxed">{step.text}</p>
               </div>
             ))}
           </div>

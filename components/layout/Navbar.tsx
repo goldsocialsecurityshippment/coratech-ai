@@ -30,55 +30,53 @@ export function Navbar() {
   const solid = scrolled || !isHome;
 
   return (
-    <header style={{
-      position: "fixed", top: 0, left: 0, right: 0, zIndex: 100,
-      background: solid ? "rgba(238,242,247,0.96)" : "transparent",
-      backdropFilter: solid ? "blur(12px)" : "none",
-      borderBottom: solid ? "1px solid rgba(15,23,42,0.08)" : "none",
-      transition: "all 0.4s ease",
-    }}>
-      <div className="wrap" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", height: "72px" }}>
-        <Link href="/" style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-          <div style={{ width: "32px", height: "32px", borderRadius: "6px", background: solid ? "#0A0F1E" : "white", display: "flex", alignItems: "center", justifyContent: "center", transition: "background 0.3s" }}>
-            <span style={{ fontFamily: "Georgia,serif", fontSize: "15px", color: solid ? "white" : "#0A0F1E" }}>C</span>
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${solid ? "bg-[#EEF2F7]/95 backdrop-blur-md border-b border-[#0A0F1E]/10" : "bg-transparent"}`}>
+      <div className="wrap flex items-center justify-between h-16 md:h-20">
+        {/* Logo */}
+        <Link href="/" className="flex items-center gap-2.5">
+          <div className={`w-8 h-8 rounded-md flex items-center justify-center transition-colors duration-300 ${solid ? "bg-[#0A0F1E]" : "bg-white"}`}>
+            <span className={`font-serif text-sm transition-colors duration-300 ${solid ? "text-white" : "text-[#0A0F1E]"}`}>C</span>
           </div>
-          <span style={{ fontWeight: 500, fontSize: "15px", letterSpacing: "-0.01em", color: solid ? "#0A0F1E" : "white", transition: "color 0.3s" }}>Coratech AI</span>
+          <span className={`font-medium text-[15px] tracking-tight transition-colors duration-300 ${solid ? "text-[#0A0F1E]" : "text-white"}`}>Coratech AI</span>
         </Link>
 
-        <nav style={{ display: "flex", alignItems: "center", gap: "4px" }} className="hidden-mobile">
+        {/* Desktop nav */}
+        <nav className="hidden lg:flex items-center gap-1">
           {links.map(l => (
-            <Link key={l.href} href={l.href} style={{
-              padding: "8px 14px", borderRadius: "8px", fontSize: "14px",
-              color: solid ? (path.startsWith(l.href) ? "#0A0F1E" : "#4A5568") : (path.startsWith(l.href) ? "white" : "rgba(255,255,255,0.8)"),
-              background: path.startsWith(l.href) ? (solid ? "rgba(15,23,42,0.07)" : "rgba(255,255,255,0.12)") : "transparent",
-              fontWeight: path.startsWith(l.href) ? 500 : 400,
-              transition: "all 0.2s",
-            }}>{l.label}</Link>
+            <Link key={l.href} href={l.href} className={`px-3 py-2 rounded-lg text-sm transition-all duration-200 ${
+              path.startsWith(l.href)
+                ? solid ? "text-[#0A0F1E] bg-[#0A0F1E]/07 font-medium" : "text-white bg-white/15 font-medium"
+                : solid ? "text-[#4A5568] hover:text-[#0A0F1E] hover:bg-[#0A0F1E]/05" : "text-white/80 hover:text-white hover:bg-white/10"
+            }`}>{l.label}</Link>
           ))}
         </nav>
 
-        <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-          <Link href="/contact" style={{ padding: "9px 20px", borderRadius: "8px", fontSize: "14px", fontWeight: 500, background: solid ? "#0A0F1E" : "white", color: solid ? "white" : "#0A0F1E", transition: "all 0.3s" }} className="hidden-mobile">Get in Touch</Link>
-          <button onClick={() => setOpen(!open)} style={{ padding: "6px", borderRadius: "6px", background: "transparent", border: "none", cursor: "pointer", color: solid ? "#0A0F1E" : "white" }} className="show-mobile">
+        {/* CTA + mobile toggle */}
+        <div className="flex items-center gap-3">
+          <Link href="/contact" className={`hidden lg:inline-flex items-center px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${solid ? "bg-[#0A0F1E] text-white hover:bg-[#1a2744]" : "bg-white text-[#0A0F1E] hover:bg-white/90"}`}>
+            Get in Touch
+          </Link>
+          <button onClick={() => setOpen(!open)} className={`lg:hidden p-2 rounded-lg transition-colors ${solid ? "text-[#0A0F1E] hover:bg-[#0A0F1E]/07" : "text-white hover:bg-white/10"}`}>
             {open ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
       </div>
 
+      {/* Mobile menu */}
       {open && (
-        <div style={{ background: "#EEF2F7", borderTop: "1px solid rgba(15,23,42,0.08)", padding: "16px 0 24px" }}>
-          <div className="wrap" style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
+        <div className="lg:hidden bg-[#EEF2F7] border-t border-[#0A0F1E]/08">
+          <div className="wrap py-4 flex flex-col gap-1">
             {links.map(l => (
-              <Link key={l.href} href={l.href} style={{ padding: "12px 16px", borderRadius: "8px", fontSize: "16px", color: path.startsWith(l.href) ? "#0A0F1E" : "#4A5568", background: path.startsWith(l.href) ? "rgba(15,23,42,0.07)" : "transparent", fontWeight: path.startsWith(l.href) ? 500 : 400 }}>{l.label}</Link>
+              <Link key={l.href} href={l.href} className={`px-4 py-3 rounded-lg text-base transition-colors ${path.startsWith(l.href) ? "text-[#0A0F1E] bg-[#0A0F1E]/07 font-medium" : "text-[#4A5568]"}`}>
+                {l.label}
+              </Link>
             ))}
-            <Link href="/contact" style={{ marginTop: "12px", padding: "14px 16px", borderRadius: "8px", background: "#0A0F1E", color: "white", fontSize: "16px", fontWeight: 500, textAlign: "center" }}>Get in Touch</Link>
+            <Link href="/contact" className="mt-3 px-4 py-3 bg-[#0A0F1E] text-white rounded-lg text-base font-medium text-center">
+              Get in Touch
+            </Link>
           </div>
         </div>
       )}
-      <style>{`
-        @media (max-width: 900px) { .hidden-mobile { display: none !important; } }
-        @media (min-width: 901px) { .show-mobile { display: none !important; } }
-      `}</style>
     </header>
   );
 }
