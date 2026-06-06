@@ -27,6 +27,9 @@ export const metadata: Metadata = {
     title: "Coratech AI — Enterprise AI from Ghana",
     description: "Building AI systems and digital infrastructure for enterprise organisations in Africa and beyond.",
   },
+  verification: {
+    google: "_OpVrtAAEUNuyRdVIj-4UxjfvYcIvzg9q9d3sHnmxeI",
+  },
   robots: {
     index: true,
     follow: true,
