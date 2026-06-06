@@ -4,7 +4,14 @@ import { ArrowRight } from "lucide-react";
 import { insights } from "@/lib/data";
 import { PageHeader } from "@/components/ui/shared";
 
-export const metadata = { title: "Insights" };
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Insights — AI and Enterprise Technology Perspectives | Coratech AI Ghana",
+  description: "Practical perspectives on artificial intelligence, automation and enterprise technology from the Coratech AI team in Ghana. Research, analysis and industry commentary.",
+  keywords: ["AI insights Africa", "enterprise technology blog Ghana", "artificial intelligence news Africa", "AI research Ghana", "digital transformation insights Africa"],
+  openGraph: { title: "Insights — AI Perspectives | Coratech AI Ghana", description: "Research and analysis on AI and enterprise technology from Ghana." },
+};
 
 export default function InsightsPage() {
   const [first, ...rest] = insights;

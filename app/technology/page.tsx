@@ -1,6 +1,13 @@
 import { PageHeader, CTA, Label } from "@/components/ui/shared";
 
-export const metadata = { title: "Technology" };
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Technology Stack — Enterprise AI Infrastructure | Coratech AI Ghana",
+  description: "Coratech AI uses proven enterprise technology including GPT-4, Claude, AWS, Kubernetes and Snowflake. SOC 2, HIPAA and GDPR compliant systems built for African and global enterprise environments.",
+  keywords: ["enterprise AI technology Ghana", "AI stack Africa", "SOC 2 certified Ghana", "HIPAA compliant AI Africa", "cloud infrastructure Ghana"],
+  openGraph: { title: "Technology Stack | Coratech AI Ghana", description: "Proven enterprise AI and cloud technology stack for African enterprises." },
+};
 
 const stack = [
   { cat: "AI and Machine Learning", items: ["GPT-4 and Claude", "LangChain and LangGraph", "AutoGen", "Hugging Face", "PyTorch", "scikit-learn"] },

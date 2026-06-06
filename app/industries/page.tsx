@@ -4,7 +4,14 @@ import { ArrowRight } from "lucide-react";
 import { industries } from "@/lib/data";
 import { PageHeader, CTA } from "@/components/ui/shared";
 
-export const metadata = { title: "Industries" };
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Industries We Serve — Finance, Healthcare, Legal, Logistics | Coratech AI Ghana",
+  description: "Coratech AI builds enterprise AI systems for financial services, healthcare, legal, logistics, government, education, insurance, manufacturing and retail organisations in Ghana and across Africa.",
+  keywords: ["AI for finance Ghana", "healthcare AI Africa", "legal AI Ghana", "logistics technology Africa", "government AI Ghana", "education technology Africa"],
+  openGraph: { title: "Industries We Serve | Coratech AI Ghana", description: "Enterprise AI for finance, healthcare, legal, logistics, government and more across Ghana and Africa." },
+};
 
 export default function IndustriesPage() {
   return (

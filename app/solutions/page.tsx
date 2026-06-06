@@ -3,7 +3,14 @@ import { ArrowRight } from "lucide-react";
 import { solutions } from "@/lib/data";
 import { PageHeader, CTA } from "@/components/ui/shared";
 
-export const metadata = { title: "Solutions" };
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Enterprise AI Solutions — Automation, Agents, Data Intelligence | Coratech AI Ghana",
+  description: "Coratech AI offers enterprise AI solutions including automation, AI agents, compliance systems, data intelligence and cloud infrastructure for organisations in Ghana, Africa and globally.",
+  keywords: ["AI automation Ghana", "AI agents Africa", "enterprise software Ghana", "data intelligence Accra", "compliance systems Ghana", "cloud infrastructure Africa"],
+  openGraph: { title: "Enterprise AI Solutions | Coratech AI Ghana", description: "AI automation, agents, compliance and data intelligence for enterprise organisations in Ghana and Africa." },
+};
 
 export default function SolutionsPage() {
   return (

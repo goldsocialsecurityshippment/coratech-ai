@@ -4,7 +4,14 @@ import { ArrowRight } from "lucide-react";
 import { caseStudies } from "@/lib/data";
 import { PageHeader, CTA } from "@/components/ui/shared";
 
-export const metadata = { title: "Case Studies" };
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Case Studies — Enterprise AI Results and Client Outcomes | Coratech AI Ghana",
+  description: "See how Coratech AI has helped banks, hospitals, law firms, logistics companies and retailers across Africa and beyond improve operations with AI. Real results, real numbers.",
+  keywords: ["AI case studies Africa", "enterprise AI results Ghana", "AI implementation examples Africa", "digital transformation results Ghana", "AI ROI Africa"],
+  openGraph: { title: "Case Studies — Real AI Results | Coratech AI Ghana", description: "Real results from AI implementations across finance, healthcare, legal and logistics in Africa." },
+};
 
 export default function CaseStudiesPage() {
   return (

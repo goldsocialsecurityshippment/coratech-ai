@@ -3,7 +3,14 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { CTA, Label } from "@/components/ui/shared";
 
-export const metadata = { title: "Why Use AI" };
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Why Use AI — Benefits of Artificial Intelligence for Business | Coratech AI Ghana",
+  description: "Learn why artificial intelligence is transforming enterprises in Ghana and across Africa. Plain language explanation of AI benefits, cost savings, and how it applies to your industry.",
+  keywords: ["why use AI Ghana", "AI benefits Africa", "artificial intelligence for business Ghana", "AI ROI Africa", "how AI helps business Accra"],
+  openGraph: { title: "Why Use AI | Coratech AI Ghana", description: "Plain language guide to AI benefits for enterprises in Ghana and Africa." },
+};
 
 const benefits = [
   { icon: "clock", title: "It handles the work that eats your time", text: "Think about the tasks in your organisation that happen every single day — reading documents, entering data, sending follow-up emails, generating reports. These tasks are necessary but they do not need a human to do them. AI can handle all of it automatically, around the clock, without getting tired or making the kinds of small errors that accumulate into big problems." },

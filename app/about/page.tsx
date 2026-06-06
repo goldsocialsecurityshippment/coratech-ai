@@ -2,7 +2,14 @@ import Image from "next/image";
 import { CTA, Label } from "@/components/ui/shared";
 import { teamMembers, values } from "@/lib/data";
 
-export const metadata = { title: "About" };
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "About Coratech AI — Enterprise Technology Company | Accra, Ghana",
+  description: "Coratech AI is founded in Accra, Ghana by Lawrencia Peasah Yeboah and Ernest Kwame Adjei. We build enterprise AI and digital infrastructure for organisations across Africa, London and beyond. Part of Canmore Digital.",
+  keywords: ["Coratech AI founders", "AI company Ghana", "enterprise AI Accra", "Lawrencia Peasah Yeboah", "Ernest Kwame Adjei", "Canmore Digital Ghana", "AI startup Ghana", "technology company Accra"],
+  openGraph: { title: "About Coratech AI | Accra Ghana", description: "Founded in Accra, Ghana. Building enterprise AI for Africa and beyond." },
+};
 
 export default function AboutPage() {
   return (

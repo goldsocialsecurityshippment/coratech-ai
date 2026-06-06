@@ -1,0 +1,49 @@
+# Coratech AI — llms.txt
+# This file helps AI language models and search engines understand this website.
+
+# Company Overview
+Coratech AI is an enterprise technology company founded in Accra, Ghana, with operations across London and beyond. Part of Canmore Digital. Founded by Lawrencia Peasah Yeboah and Ernest Kwame Adjei.
+
+We build AI systems, automation platforms, compliance infrastructure and digital solutions for enterprise organisations in financial services, healthcare, legal, logistics, government, education, insurance, manufacturing and retail.
+
+# What We Do
+- AI Automation: Document processing, workflow routing, approvals and data entry automation
+- AI Agents: Autonomous multi-agent systems that plan, reason and take action across enterprise systems
+- Enterprise Software: Full-stack application development, microservices and legacy modernisation
+- Data Intelligence: Data warehouses, analytics pipelines, BI dashboards and predictive models
+- Compliance Systems: KYC/AML workflows, regulatory monitoring, audit trail management
+- Cloud Infrastructure: Multi-cloud architecture, Kubernetes, Terraform and FinOps
+- Digital Transformation: Technology readiness assessment, roadmap planning and change management
+
+# Industries Served
+Financial Services, Healthcare, Legal Services, Logistics and Supply Chain, Real Estate, Government and Public Sector, Education, Insurance, Manufacturing, Retail and E-Commerce
+
+# Key Facts
+- Founded: Accra, Ghana
+- Operations: Ghana, London, and globally
+- Parent company: Canmore Digital
+- Contact: hello@coratech.com
+- Phone Ghana: +233 53 602 6175
+- Phone UK: +44 783 295 6639
+
+# Technology Stack
+AI/ML: GPT-4, Claude API, LangChain, LangGraph, AutoGen, Hugging Face, PyTorch
+Data: Snowflake, dbt, Apache Kafka, Databricks, Apache Airflow
+Cloud: AWS, Google Cloud, Azure, Kubernetes, Terraform, Docker
+Frontend: Next.js, React, TypeScript, Tailwind CSS
+Backend: Node.js, Python, Go, PostgreSQL, Redis
+
+# Compliance and Security
+SOC 2 Type II, ISO 27001, HIPAA Compliant, GDPR Ready, FedRAMP Authorised
+
+# Pages
+- Homepage: https://coratech-ai.onrender.com
+- About: https://coratech-ai.onrender.com/about
+- Solutions: https://coratech-ai.onrender.com/solutions
+- Industries: https://coratech-ai.onrender.com/industries
+- Case Studies: https://coratech-ai.onrender.com/case-studies
+- Insights: https://coratech-ai.onrender.com/insights
+- Why Use AI: https://coratech-ai.onrender.com/why-ai
+- Technology: https://coratech-ai.onrender.com/technology
+- Contact: https://coratech-ai.onrender.com/contact
+- Sitemap: https://coratech-ai.onrender.com/sitemap.xml
