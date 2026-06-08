@@ -5,26 +5,14 @@ import { values } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "About Coratech AI — Enterprise Technology Company | Accra, Ghana",
-  description: "Coratech AI is founded in Accra, Ghana by Lawrencia Peasah Yeboah and Ernest Kwame Adjei. We build AI and digital infrastructure for organisations across Africa and beyond.",
-  keywords: ["Coratech AI founders", "AI company Ghana", "enterprise AI Accra", "Canmore Digital Ghana"],
+  description: "Coratech AI is an enterprise technology company based in Accra, Ghana. We build AI systems and digital infrastructure for organisations across Africa and beyond. Part of Canmore Digital.",
+  keywords: ["AI company Ghana", "enterprise AI Accra", "Canmore Digital Ghana", "technology company Ghana"],
 };
-
-const founders = [
-  {
-    name: "Lawrencia Peasah Yeboah",
-    title: "Founder",
-    bio: "Lawrencia started Coratech AI because she saw a gap in the market. Most enterprise technology was being built for organisations in Europe and the US, while businesses in Africa were being left behind. She leads client relationships and the company's direction, and she is passionate about building things that actually work in practice, not just on paper.",
-  },
-  {
-    name: "Ernest Kwame Adjei",
-    title: "Founder",
-    bio: "Ernest has spent years building software for complex business environments. He co-founded Coratech AI to bring serious engineering to African enterprises. He leads product and technology development, and his approach is straightforward: if a system is hard to use or breaks often, it was not built properly.",
-  },
-];
 
 export default function AboutPage() {
   return (
     <>
+      {/* Hero */}
       <section className="relative pt-28 md:pt-40 pb-14 md:pb-20 overflow-hidden">
         <Image src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=1920&q=80&auto=format&fit=crop" alt="Modern office" fill className="object-cover object-center" />
         <div className="absolute inset-0 bg-[#0A0F1E]/80" />
@@ -38,6 +26,7 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* Who we are */}
       <section className="py-16 md:py-24 bg-[#EEF2F7]">
         <div className="wrap">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
@@ -64,6 +53,7 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* Quote */}
       <section className="relative py-16 md:py-24 overflow-hidden">
         <Image src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=1920&q=80&auto=format&fit=crop" alt="Team at work" fill className="object-cover" />
         <div className="absolute inset-0 bg-[#0A0F1E]/83" />
@@ -73,6 +63,32 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* Numbers */}
+      <section className="py-16 md:py-24 bg-[#EEF2F7]">
+        <div className="wrap">
+          <Label>By The Numbers</Label>
+          <h2 className="text-2xl md:text-4xl text-[#0A0F1E] mb-10">A track record we are proud of.</h2>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {[
+              { metric: "47+", label: "Businesses we have worked with" },
+              { metric: "10", label: "Industries we serve" },
+              { metric: "99.99%", label: "Uptime across our systems" },
+              { metric: "40%", label: "Average cost reduction for clients" },
+              { metric: "70%", label: "Less manual work for our clients" },
+              { metric: "8", label: "Countries with active clients" },
+              { metric: "3x", label: "Average throughput improvement" },
+              { metric: "99.2%", label: "AI processing accuracy rate" },
+            ].map((s, i) => (
+              <div key={i} className="card p-6">
+                <div className="font-serif text-3xl md:text-4xl text-[#0A0F1E] mb-2 leading-none">{s.metric}</div>
+                <p className="text-sm text-[#4A5568] leading-snug">{s.label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Values */}
       <section className="py-16 md:py-24 bg-[#E2E8F0]">
         <div className="wrap">
           <Label>What We Believe</Label>
@@ -88,29 +104,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="py-16 md:py-24 bg-[#EEF2F7]">
-        <div className="wrap">
-          <Label>The Founders</Label>
-          <h2 className="text-2xl md:text-4xl text-[#0A0F1E] mb-10">The people behind Coratech AI.</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-3xl">
-            {founders.map(m => (
-              <div key={m.name} className="card overflow-hidden">
-                <div className="p-8 bg-[#0A0F1E] flex items-center justify-center">
-                  <div className="w-20 h-20 rounded-full bg-[#4A6FA5]/20 border-2 border-[#4A6FA5]/40 flex items-center justify-center">
-                    <span className="font-serif text-3xl text-white">{m.name.charAt(0)}</span>
-                  </div>
-                </div>
-                <div className="p-6">
-                  <h3 className="font-serif text-xl text-[#0A0F1E] mb-1">{m.name}</h3>
-                  <p className="text-sm text-[#4A6FA5] font-medium mb-4">{m.title}, Coratech AI</p>
-                  <p className="text-sm text-[#4A5568] leading-relaxed">{m.bio}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
+      {/* Why us */}
       <section className="py-16 md:py-24 bg-[#0A0F1E]">
         <div className="wrap">
           <div className="flex items-center gap-3 mb-5">
@@ -121,11 +115,11 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {[
               { title: "We think long term", text: "We are not interested in building something impressive that falls apart six months later. Every decision we make is about whether this will still work well in three years." },
-              { title: "We are straight with you", text: "If something is not going to work the way you are hoping, we will tell you. We would rather lose a project than damage a client relationship by overpromising." },
-              { title: "We have done this before", text: "We have built systems for banks, hospitals, law firms and logistics companies. We know the compliance requirements, the organisational challenges and the things that usually go wrong." },
-              { title: "We do not disappear", text: "A lot of technology companies vanish after the handover. We stick around. When things change or something needs fixing, we are still there." },
+              { title: "We are straight with you", text: "If something is not going to work the way you are hoping, we will tell you. We would rather lose a project than damage a relationship by overpromising." },
+              { title: "We have done this before", text: "We have built systems for banks, hospitals, law firms and logistics companies. We know the compliance requirements and the things that usually go wrong." },
+              { title: "We do not disappear", text: "A lot of technology companies vanish after handover. We stick around. When things change or something needs fixing, we are still there." },
               { title: "The people you meet do the work", text: "There is no bait and switch. The team you talk to at the start is the team that builds your product." },
-              { title: "We understand African markets", text: "We are based in Ghana and we have worked across the continent. We understand the infrastructure, the regulations and the business environment in a way that many overseas firms do not." },
+              { title: "We understand African markets", text: "We are based in Ghana and we have worked across the continent. We understand the infrastructure, the regulations and the business environment here." },
             ].map(item => (
               <div key={item.title} className="border border-white/10 rounded-xl p-6">
                 <h3 className="font-serif text-lg text-white mb-3">{item.title}</h3>
@@ -136,6 +130,7 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* Canmore */}
       <section className="py-10 bg-[#E2E8F0] border-t border-[#0A0F1E]/07 text-center">
         <div className="wrap">
           <p className="text-base text-[#4A5568]">Coratech AI is part of <span className="font-semibold text-[#0A0F1E]">Canmore Digital</span>.</p>
