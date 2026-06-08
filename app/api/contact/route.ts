@@ -14,7 +14,7 @@ export async function POST(req: NextRequest) {
 
     const { data, error } = await resend.emails.send({
       from: "Coratech AI Website <onboarding@resend.dev>",
-      to: ["hello@coratech.com"],
+      to: ["hello@coratechai.com"],
       replyTo: email,
       subject: `New enquiry from ${firstName} ${lastName} — ${company || "Unknown Company"}`,
       html: `
