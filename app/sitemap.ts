@@ -2,7 +2,7 @@ import { MetadataRoute } from "next";
 import { solutions, industries, caseStudies, insights } from "@/lib/data";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const base = "https://coratech-ai.onrender.com";
+  const base = "https://coratechai.com";
   const now = new Date();
 
   const staticPages = [

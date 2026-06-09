@@ -4,7 +4,7 @@ import { Footer } from "@/components/layout/Footer";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://coratech-ai.onrender.com"),
+  metadataBase: new URL("https://coratechai.com"),
   title: {
     default: "Coratech AI — Enterprise AI and Technology Infrastructure | Accra, Ghana",
     template: "%s | Coratech AI Ghana",
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_GH",
-    url: "https://coratech-ai.onrender.com",
+    url: "https://coratechai.com",
     siteName: "Coratech AI",
     title: "Coratech AI — Enterprise AI and Technology Infrastructure | Ghana",
     description: "Ghana-based enterprise technology company building AI systems, automation platforms and digital infrastructure for organisations in Africa and globally.",
