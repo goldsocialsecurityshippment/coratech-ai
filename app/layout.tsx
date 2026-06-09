@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     description: "Building AI systems and digital infrastructure for enterprise organisations in Africa and beyond.",
   },
   verification: {
-    google: "_OpVrtAAEUNuyRdVIj-4UxjfvYcIvzg9q9d3sHnmxeI",
+    google: "5dXLmp2xIe2i3xqPkN2Q7KiiEAsayer1YKKc6KP8UxU",
   },
   robots: {
     index: true,
