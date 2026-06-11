@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
-import { solutions, industries, caseStudies, insights } from "@/lib/data";
+import { solutions, industries, insights } from "@/lib/data";
 import { Label } from "@/components/ui/shared";
 import type { Metadata } from "next";
 
@@ -125,48 +125,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Case Studies */}
-      <section className="py-16 md:py-24 bg-[#0A0F1E]">
-        <div className="wrap">
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12">
-            <div>
-              <div className="flex items-center gap-3 mb-5">
-                <div className="w-7 h-px bg-[#6B8FBF]" />
-                <span className="text-xs font-semibold tracking-[0.1em] uppercase text-[#6B8FBF]">Client Work</span>
-              </div>
-              <h2 className="text-3xl md:text-4xl text-white">Work we are proud of.</h2>
-            </div>
-            <Link href="/case-studies" className="flex items-center gap-2 text-sm text-white/50 font-medium whitespace-nowrap hover:text-white transition-colors">All case studies <ArrowRight size={14} /></Link>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {caseStudies.slice(0, 2).map(cs => (
-              <Link key={cs.slug} href={`/case-studies/${cs.slug}`} className="card-dark block overflow-hidden rounded-xl">
-                <div className="relative h-48">
-                  <Image src={(cs as any).image} alt={`${cs.client} case study`} fill className="object-cover" />
-                  <div className="absolute inset-0 bg-[#0A0F1E]/55" />
-                  <div className="absolute bottom-4 left-5">
-                    <span className="px-3 py-1 bg-white/15 backdrop-blur-sm rounded-full text-xs text-white/85">{cs.industry}</span>
-                  </div>
-                </div>
-                <div className="p-6">
-                  <p className="text-xs font-semibold tracking-widest uppercase text-[#6B8FBF] mb-2">{cs.client}</p>
-                  <h3 className="font-serif text-lg md:text-xl text-white leading-snug mb-3">{cs.title}</h3>
-                  <p className="text-sm text-white/55 leading-relaxed mb-6">{cs.summary}</p>
-                  <div className="grid grid-cols-2 gap-4">
-                    {cs.outcomes.slice(0, 2).map((o, i) => (
-                      <div key={i} className="border-l-2 border-[#6B8FBF]/50 pl-3">
-                        <div className="font-serif text-2xl text-white leading-none">{o.metric}</div>
-                        <p className="text-xs text-white/40 mt-1">{o.label}</p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Insights */}
       <section className="py-16 md:py-24 bg-[#EEF2F7] border-b border-[#0A0F1E]/07">
         <div className="wrap">
@@ -207,8 +165,8 @@ export default function Home() {
             <Link href="/contact" className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-white text-[#0A0F1E] rounded-lg text-[15px] font-semibold hover:bg-white/90 transition-all">
               Get in Touch <ArrowRight size={15} />
             </Link>
-            <Link href="/case-studies" className="inline-flex items-center justify-center gap-2 px-7 py-3.5 border border-white/20 text-white rounded-lg text-[15px] font-medium hover:border-white/50 transition-all">
-              See Our Work
+            <Link href="/why-ai" className="inline-flex items-center justify-center gap-2 px-7 py-3.5 border border-white/20 text-white rounded-lg text-[15px] font-medium hover:border-white/50 transition-all">
+              Why Use AI
             </Link>
           </div>
         </div>

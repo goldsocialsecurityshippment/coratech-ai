@@ -7,7 +7,6 @@ import { Menu, X } from "lucide-react";
 const links = [
   { label: "Solutions", href: "/solutions" },
   { label: "Industries", href: "/industries" },
-  { label: "Case Studies", href: "/case-studies" },
   { label: "Insights", href: "/insights" },
   { label: "Why Use AI", href: "/why-ai" },
   { label: "Company", href: "/about" },
